@@ -9,25 +9,52 @@
 
                <div class="card-body">
                 <form method="POST" action="{{route('truck.update',[$truck])}}">
-                    Maker: <input type="text" name="truck_maker" value="{{$truck->maker}}">
-                    Plate: <input type="text" name="truck_plate" value="{{$truck->plate}}">
-                    Make Year: <input type="text" name="truck_make_year" value="{{$truck->make_year}}">
-                    Mechanic Notices: <textarea name="truck_mechanic_notices">{{$truck->mechanic_notices}}</textarea>
-                    <select name="mechanic_id">
-                        @foreach ($mechanics as $mechanic)
-                            <option value="{{$mechanic->id}}" @if($mechanic->id == $truck->mechanic_id) selected @endif>
-                                {{$mechanic->name}} {{$mechanic->surname}}
-                            </option>
-                        @endforeach
-                </select>
+                    <div class="form-group">
+                        <label>Maker</label>
+                        <input type="text" class="form-control" name="truck_maker" value="{{$truck->maker}}">
+                        <small class="form-text text-muted">Kurejo pavadinimas</small>
+                      </div>
+
+                      <div class="form-group">
+                        <label>Plate</label>
+                        <input type="text" class="form-control" name="truck_plate" value="{{$truck->plate}}">
+                        <small class="form-text text-muted">Platforma</small>
+                      </div>
+
+                      <div class="form-group">
+                        <label> Make Year</label>
+                        <input type="text" class="form-control" name="truck_make_year" value="{{$truck->make_year}}">
+                        <small class="form-text text-muted">Metai</small>
+                      </div>
+
+                      <div class="form-group">
+                        <label>Mechanic Notices</label>
+                        <textarea type="text" class="form-control" name="truck_mechanic_notices" value="{{$truck->mechanic_notices}}" id="summernote"></textarea>
+                        <small class="form-text text-muted">Aprasymas</small>
+                      </div>
+                      <div class="form-group">
+                        <select name="mechanic_id">
+                            @foreach ($mechanics as $mechanic)
+                                <option value="{{$mechanic->id}}" @if($mechanic->id == $truck->mechanic_id) selected @endif>
+                                    {{$mechanic->name}} {{$mechanic->surname}}
+                                </option>
+                            @endforeach
+                    </select>
+                      </div>
                     @csrf
-                    <button type="submit">EDIT</button>
+                    <button type="submit" class="btn btn-primary">EDIT</button>
                 </form>
                </div>
            </div>
        </div>
    </div>
 </div>
+<script>
+    $(document).ready(function() {
+       $('#summernote').summernote();
+     });
+    </script>
+    
 @endsection
 
 @section('title') Edit Truck @endsection
