@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Trucks;
+use App\Models\Truck;
 use Illuminate\Http\Request;
+use App\Http\Controllers\TruckController;
 
-class TrucksController extends Controller
+class TruckController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class TrucksController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Trucks  $trucks
+     * @param  \App\Models\Truck  $Truck
      * @return \Illuminate\Http\Response
      */
-    public function show(Trucks $trucks)
+    public function show(Truck $truck)
     {
         //
     }
@@ -52,10 +53,10 @@ class TrucksController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Trucks  $trucks
+     * @param  \App\Models\Truck  $Truck
      * @return \Illuminate\Http\Response
      */
-    public function edit(Trucks $trucks)
+    public function edit(Truck $truck)
     {
         //
     }
@@ -64,10 +65,10 @@ class TrucksController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Trucks  $trucks
+     * @param  \App\Models\Truck  $Truck
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Trucks $trucks)
+    public function update(Request $request, Truck $truck)
     {
         //
     }
@@ -75,10 +76,10 @@ class TrucksController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Trucks  $trucks
+     * @param  \App\Models\Truck  $Truck
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Trucks $trucks)
+    public function destroy(Truck $truck)
     {
         //
     }
