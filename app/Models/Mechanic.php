@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Mechanic extends Model
 {
     use HasFactory;
+
+    public function MechanicTrucks()
+   {
+       return $this->hasMany('App\Models\Truck', 'mechanic_id', 'id');
+   }
+
 }

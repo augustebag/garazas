@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Truck extends Model
 {
     use HasFactory;
+    
+    public function TruckAuthor()
+       {
+           return $this->belongsTo('App\Models\Mechanic', 'mechanic_id', 'id');
+       }
 }
+
