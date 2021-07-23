@@ -11,19 +11,19 @@
                 <form method="POST" action="{{route('truck.store')}}">
                     <div class="form-group">
                         <label>Maker</label>
-                        <input type="text" class="form-control" name="truck_maker">
+                        <input type="text" class="form-control" name="truck_maker" value="{{old('truck_maker')}}">
                         <small class="form-text text-muted">Kurejo pavadinimas</small>
                       </div>
 
                       <div class="form-group">
                         <label>Plate</label>
-                        <input type="text" class="form-control" name="truck_plate">
+                        <input type="text" class="form-control" name="truck_plate" value="{{old('truck_plate')}}">
                         <small class="form-text text-muted">Platforma</small>
                       </div>
 
                       <div class="form-group">
                         <label> Make Year</label>
-                        <input type="text" class="form-control" name="truck_make_year">
+                        <input type="text" class="form-control" name="truck_make_year" value="{{old('truck_make_year')}}">
                         <small class="form-text text-muted">Metai</small>
                       </div>
 

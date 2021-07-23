@@ -11,25 +11,25 @@
                 <form method="POST" action="{{route('truck.update',[$truck])}}">
                     <div class="form-group">
                         <label>Maker</label>
-                        <input type="text" class="form-control" name="truck_maker" value="{{$truck->maker}}">
+                        <input type="text" class="form-control" name="truck_maker" value="{{old('truck_maker',$truck->maker)}}">
                         <small class="form-text text-muted">Kurejo pavadinimas</small>
                       </div>
 
                       <div class="form-group">
                         <label>Plate</label>
-                        <input type="text" class="form-control" name="truck_plate" value="{{$truck->plate}}">
+                        <input type="text" class="form-control" name="truck_plate" value="{{old('truck_plate',$truck->plate)}}">
                         <small class="form-text text-muted">Platforma</small>
                       </div>
 
                       <div class="form-group">
                         <label> Make Year</label>
-                        <input type="text" class="form-control" name="truck_make_year" value="{{$truck->make_year}}">
+                        <input type="text" class="form-control" name="truck_make_year" value="{{old('truck_make_year',$truck->make_year)}}">
                         <small class="form-text text-muted">Metai</small>
                       </div>
 
                       <div class="form-group">
                         <label>Mechanic Notices</label>
-                        <textarea type="text" class="form-control" name="truck_mechanic_notices" value="{{$truck->mechanic_notices}}" id="summernote"></textarea>
+                        <textarea type="text" class="form-control" name="truck_mechanic_notices" value="{{old('truck_mechanic_notices',$truck->mechanic_notices)}}" id="summernote"></textarea>
                         <small class="form-text text-muted">Aprasymas</small>
                       </div>
                       <div class="form-group">
