@@ -19,6 +19,9 @@ class TruckController extends Controller
         // $trucks = Truck::orderBy('plate', 'asc')->get();
         $dir = 'asc';
         $sort = 'maker';
+        $mechanics = Mechanic::all();
+
+// RUSIAVIMAS
 
         if ($request->sort_by && $request->dir) {
             if ('maker' == $request->sort_by && 'asc' == $request->dir) {
@@ -35,7 +38,12 @@ class TruckController extends Controller
                 $dir = 'plate';
             } else { $trucks = Truck::all();
             }
-            
+    }
+
+// FILTRAVIMAS
+
+        elseif ($request->mechanic_id) {
+            $trucks = Truck::where('mechanic_id', (int)$request->mechanic_id)->get();
         } else {
             $trucks = Truck::all();
         }
@@ -44,6 +52,7 @@ class TruckController extends Controller
         ['trucks' => $trucks,
         'dir' => $dir,
         'sort' => $sort,
+        'mechanics' => $mechanics,
     ]);
  
     }

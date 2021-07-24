@@ -28,6 +28,22 @@
                 <button type="submit" class="btn btn-primary">Sort</button>
                 <a href="{{route('truck.index')}}" class="btn btn-danger">Clear</a>
             </form>
+
+            <form action="{{route('truck.index')}}" method="get" class="sort-form">
+                <fieldset>
+                    <legend>Filter by: </legend>
+                    <div class="form-group">
+                        <select class="mechanic_id" class="form-control">
+                            @foreach($mechanics as $mechanic)
+                                <option value="{{$mechanic->id}}">{{$mechanic->name}} {{$mechanic->surname}}
+                            @endforeach
+                        </select>
+                    </div>
+                </fieldset>
+                <button type="submit" class="btn btn-primary">Filter</button>
+                <a href="{{route('truck.index')}}" class="btn btn-danger">Clear</a>
+            </form>
+
             </div>
 
                <div class="card-body">
