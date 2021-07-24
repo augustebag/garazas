@@ -14,10 +14,37 @@ class TruckController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $trucks = Truck::all();
-        return view('truck.index', ['trucks' => $trucks]);
+        // $trucks = Truck::orderBy('plate', 'asc')->get();
+        $dir = 'asc';
+        $sort = 'maker';
+
+        if ($request->sort_by && $request->dir) {
+            if ('maker' == $request->sort_by && 'asc' == $request->dir) {
+                $trucks = Truck::orderBy('maker')->get();
+            } elseif ('maker' == $request->sort_by && 'desc' == $request->dir) {
+                $trucks = Truck::orderBy('maker')->get();
+                $dir = 'desc';
+            } elseif ('plate' == $request->sort_by && 'asc' == $request->dir) {
+                $trucks = Truck::orderBy('plate')->get();
+                $dir = 'plate';
+            } elseif ('plate' == $request->sort_by && 'desc' == $request->dir) {
+                $trucks = Truck::orderBy('plate')->get();
+                $dir = 'desc';
+                $dir = 'plate';
+            } else { $trucks = Truck::all();
+            }
+            
+        } else {
+            $trucks = Truck::all();
+        }
+
+        return view('truck.index', 
+        ['trucks' => $trucks,
+        'dir' => $dir,
+        'sort' => $sort,
+    ]);
  
     }
 

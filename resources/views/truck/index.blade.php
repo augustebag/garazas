@@ -10,19 +10,19 @@
                 <fieldset>
                     <legend>Sort by: </legend>
                     <div>
-                    <label>Maker </label><input type="radio" name="sort_by" value="maker" checked>
+                    <label>Maker </label><input type="radio" name="sort_by" value="maker" @if('maker'== $sort) checked @endif>
                     </div>
                     <div>
-                    <label>Plate </label><input type="radio" name="sort_by" value="plate">
+                    <label>Plate </label><input type="radio" name="sort_by" value="plate" @if('plate'== $sort) checked @endif>
                     </div>
                 </fieldset>
                 <fieldset>
                     <legend>Direction: </legend>
                     <div>
-                    <label>Up </label><input type="radio" name="dir" value="maker" checked>
+                    <label>Up </label><input type="radio" name="dir" value="esc" @if('esc'== $dir) checked @endif>
                     </div>
                     <div>
-                    <label>Down </label><input type="radio" name="dir" value="plate">
+                    <label>Down </label><input type="radio" name="dir" value="desc" @if('desc'== $dir) checked @endif>
                     </div>
                 </fieldset>
                 <button type="submit" class="btn btn-primary">Sort</button>
