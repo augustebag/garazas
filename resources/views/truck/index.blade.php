@@ -4,8 +4,31 @@
 <div class="container">
    <div class="row justify-content-center">
        <div class="col-md-8">
-           <div class="card">
-               <div class="card-header">All Trucks</div>
+           <div class="card-header">
+            <h2>All Trucks</h2>
+            <form action="{{route('truck.index')}}" method="get" class="sort-form">
+                <fieldset>
+                    <legend>Sort by: </legend>
+                    <div>
+                    <label>Maker </label><input type="radio" name="sort_by" value="maker" checked>
+                    </div>
+                    <div>
+                    <label>Plate </label><input type="radio" name="sort_by" value="plate">
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>Direction: </legend>
+                    <div>
+                    <label>Up </label><input type="radio" name="dir" value="maker" checked>
+                    </div>
+                    <div>
+                    <label>Down </label><input type="radio" name="dir" value="plate">
+                    </div>
+                </fieldset>
+                <button type="submit" class="btn btn-primary">Sort</button>
+                <a href="{{route('truck.index')}}" class="btn btn-danger">Clear</a>
+            </form>
+            </div>
 
                <div class="card-body">
                 <ul class="list-group">
