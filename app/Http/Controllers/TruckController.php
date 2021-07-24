@@ -21,6 +21,7 @@ class TruckController extends Controller
         $sort = 'maker';
         $defaultMechanic = 0;
         $mechanics = Mechanic::all();
+        $s = '';
 
 // RUSIAVIMAS
 
@@ -46,7 +47,16 @@ class TruckController extends Controller
         elseif ($request->mechanic_id) {
             $trucks = Truck::where('mechanic_id', (int)$request->mechanic_id)->get();
             $defaultMechanic = (int)$request->mechanic_id;
-        } else {
+        } 
+        
+// PAIESKA
+
+        elseif ($request->s) {
+        $trucks = Truck::where('maker', 'like', '%'.$request->s.'%')->get();
+        $s = $request->s;
+        }
+
+        else {
             $trucks = Truck::all();
         }
 
@@ -56,6 +66,7 @@ class TruckController extends Controller
         'sort' => $sort,
         'mechanics' => $mechanics,
         'defaultMechanic' => $defaultMechanic,
+        's' => $s,
     ]);
  
     }

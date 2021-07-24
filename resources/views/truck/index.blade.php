@@ -45,6 +45,17 @@
                 <a href="{{route('truck.index')}}" class="btn btn-danger">Clear</a>
             </form>
 
+            <form action="{{route('truck.index')}}" method="get" class="sort-form">
+                <fieldset>
+                    <legend>Search: </legend>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="s" value="{{$s}}">
+                    </div>
+                </fieldset>
+                <button type="submit" class="btn btn-primary">Search</button>
+                <a href="{{route('truck.index')}}" class="btn btn-danger">Clear</a>
+            </form>
+
             </div>
 
                <div class="card-body">
