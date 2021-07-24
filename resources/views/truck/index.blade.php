@@ -35,7 +35,8 @@
                     <div class="form-group">
                         <select class="mechanic_id" class="form-control">
                             @foreach($mechanics as $mechanic)
-                                <option value="{{$mechanic->id}}">{{$mechanic->name}} {{$mechanic->surname}}
+                                <option value="{{$mechanic->id}}" @if($defaultMechanic == $mechanic->id) selected @endif>
+                                    {{$mechanic->name}} {{$mechanic->surname}}
                             @endforeach
                         </select>
                     </div>
