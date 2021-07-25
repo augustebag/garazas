@@ -16,7 +16,7 @@ class TruckController extends Controller
      */
     public function index(Request $request)
     {
-        // $trucks = Truck::orderBy('plate', 'asc')->get();
+        // $trucks = Truck::orderBy('plate', 'asc')->paginate(15);
         $dir = 'asc';
         $sort = 'maker';
         $defaultMechanic = 0;
@@ -27,37 +27,37 @@ class TruckController extends Controller
 
         if ($request->sort_by && $request->dir) {
             if ('maker' == $request->sort_by && 'asc' == $request->dir) {
-                $trucks = Truck::orderBy('maker')->get();
+                $trucks = Truck::orderBy('maker')->paginate(15);
             } elseif ('maker' == $request->sort_by && 'desc' == $request->dir) {
-                $trucks = Truck::orderBy('maker')->get();
+                $trucks = Truck::orderBy('maker')->paginate(15);
                 $dir = 'desc';
             } elseif ('plate' == $request->sort_by && 'asc' == $request->dir) {
-                $trucks = Truck::orderBy('plate')->get();
+                $trucks = Truck::orderBy('plate')->paginate(15);
                 $dir = 'plate';
             } elseif ('plate' == $request->sort_by && 'desc' == $request->dir) {
-                $trucks = Truck::orderBy('plate')->get();
+                $trucks = Truck::orderBy('plate')->paginate(15);
                 $dir = 'desc';
                 $dir = 'plate';
-            } else { $trucks = Truck::all();
-            }
+            } else { $trucks = Truck::paginate(15);
+        }
     }
 
 // FILTRAVIMAS
 
         elseif ($request->mechanic_id) {
-            $trucks = Truck::where('mechanic_id', (int)$request->mechanic_id)->get();
+            $trucks = Truck::where('mechanic_id', (int)$request->mechanic_id)->paginate(15);
             $defaultMechanic = (int)$request->mechanic_id;
         } 
         
 // PAIESKA
 
         elseif ($request->s) {
-        $trucks = Truck::where('maker', 'like', '%'.$request->s.'%')->get();
+        $trucks = Truck::where('maker', 'like', '%'.$request->s.'%')->paginate(15);
         $s = $request->s;
         }
 
         else {
-            $trucks = Truck::all();
+            $trucks = Truck::paginate(15);
         }
 
         return view('truck.index', 
