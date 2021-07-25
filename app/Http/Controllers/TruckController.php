@@ -6,13 +6,14 @@ use App\Models\Truck;
 use Illuminate\Http\Request;
 use App\Models\Mechanic;
 use Validator;
+use PDF;
 
 class TruckController extends Controller
 {
     public function __construct() {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -31,25 +32,25 @@ class TruckController extends Controller
 
         if ($request->sort_by && $request->dir) {
             if ('maker' == $request->sort_by && 'asc' == $request->dir) {
-                $trucks = Truck::orderBy('maker')->paginate(15);
+                $trucks = Truck::orderBy('maker')->paginate(15)->withQueryString();
             } elseif ('maker' == $request->sort_by && 'desc' == $request->dir) {
-                $trucks = Truck::orderBy('maker')->paginate(15);
+                $trucks = Truck::orderBy('maker')->paginate(15)->withQueryString();
                 $dir = 'desc';
             } elseif ('plate' == $request->sort_by && 'asc' == $request->dir) {
-                $trucks = Truck::orderBy('plate')->paginate(15);
+                $trucks = Truck::orderBy('plate')->paginate(15)->withQueryString();
                 $dir = 'plate';
             } elseif ('plate' == $request->sort_by && 'desc' == $request->dir) {
-                $trucks = Truck::orderBy('plate')->paginate(15);
+                $trucks = Truck::orderBy('plate')->paginate(15)->withQueryString()->withQueryString();
                 $dir = 'desc';
-                $dir = 'plate';
-            } else { $trucks = Truck::paginate(15);
+                $sort = 'plate';
+            } else { $trucks = Truck::paginate(15)->withQueryString();
         }
     }
 
 // FILTRAVIMAS
 
         elseif ($request->mechanic_id) {
-            $trucks = Truck::where('mechanic_id', (int)$request->mechanic_id)->paginate(15);
+            $trucks = Truck::where('mechanic_id', (int)$request->mechanic_id)->paginate(15)->withQueryString();
             $defaultMechanic = (int)$request->mechanic_id;
         } 
         
@@ -126,7 +127,8 @@ class TruckController extends Controller
      */
     public function show(Truck $truck)
     {
-        //
+        return view('truck.show', ['truck' => $truck]);
+
     }
 
     /**
@@ -183,5 +185,11 @@ class TruckController extends Controller
         $truck->delete();
         return redirect()->route('truck.index')->with('success_message', 'Sekmingai ištrintas.');
 
+    }
+
+    public function pdf(Truck $truck)
+    {
+        $pdf = PDF::loadView('truck.pdf', ['truck' => $truck]);
+        return $pdf->download($truck ->maker.'.pdf');
     }
 }

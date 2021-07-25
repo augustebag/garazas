@@ -69,6 +69,7 @@
                             <span class="list-container__content__mechanic">{{$truck->truckAuthor->name}} {{$truck->truckAuthor->surname}}</span>
                         </div>
                         <div class="list-container__buttons">
+                            <a href="{{route('truck.show',[$truck])}}" class="btn btn-primary">More info</a>
                             <a href="{{route('truck.edit',[$truck])}}" class="btn btn-primary">Edit</a>
                             <form method="POST" action="{{route('truck.destroy', [$truck])}}">
                                 @csrf

@@ -29,7 +29,7 @@
 
                       <div class="form-group">
                         <label>Mechanic Notices</label>
-                        <textarea type="text" class="form-control" name="truck_mechanic_notices" id="summernote"></textarea>
+                        <textarea class="form-control" name="truck_mechanic_notices" id="summernote"></textarea>
                         <small class="form-text text-muted">Aprasymas</small>
                       </div>
                     
