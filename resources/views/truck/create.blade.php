@@ -28,6 +28,12 @@
                       </div>
 
                       <div class="form-group">
+                        <label>Photo</label>
+                        <input type="file" class="form-control" name="truck_plate" value="{{old('truck_plate')}}">
+                        <small class="form-text text-muted">Upload photo</small>
+                      </div>
+
+                      <div class="form-group">
                         <label>Mechanic Notices</label>
                         <textarea class="form-control" name="truck_mechanic_notices" id="summernote"></textarea>
                         <small class="form-text text-muted">Aprasymas</small>

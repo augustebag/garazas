@@ -17,6 +17,7 @@ class CreateTrucksTable extends Migration
             $table->id();
             $table->string('maker', 255);
             $table->string('plate', 20);
+            $table->string('photo', 200)->nullable();
             $table->integer('make_year');
             $table->text('mechanic_notices');
             $table->unsignedBigInteger('mechanic_id');

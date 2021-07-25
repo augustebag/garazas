@@ -43,6 +43,7 @@ class DatabaseSeeder extends Seeder
             DB::table('trucks')->insert([
                 'maker' => $maker[rand(0, count($maker) -1)],
                 'plate' => rand(2, 9),
+                'photo' => rand(0, 3) ? $faker->imageUrl(200, 300) : null,
                 'make_year' => rand(2, 9),
                 'mechanic_notices' => $faker->realText(300, 5),
                 'mechanic_id' => rand(1, 20), 
